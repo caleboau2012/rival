@@ -1,12 +1,12 @@
-const { prompt } = require("inquirer");
 const requests = require("./requests");
 
 /** This fetches messages from the bot to display on the console
  * It tracks the end of the conversations with the bot by searching for text with the words 'Thank you'
  *
- * @param {*} ID - conversationId received when the conversationwas started
+ * @param {*} conversationID
+ * @param {*} prompt
  */
-const converse = conversationID => {
+const converse = (conversationID, prompt) => {
   return requests
     .getMessages(conversationID)
     .then(response => {
@@ -32,6 +32,9 @@ const converse = conversationID => {
  *  It is part of the recursive process of message exchange with the chatbot
  *  Prompt and conversationID are sent as parameters so
  *  that these dependency are injected rather than forced on this function
+ *
+ * @param {*} prompt
+ * @param {*} conversationID
  */
 const requestAnswer = (prompt, conversationID) => {
   let question = [
@@ -45,7 +48,7 @@ const requestAnswer = (prompt, conversationID) => {
     requests
       .sendAnswer(conversationID, answers.answer)
       .then(response => {
-        if (response.correct) converse(conversationID);
+        if (response.correct) converse(conversationID, prompt);
         else {
           console.log("Wrong answer");
           requestAnswer(prompt, conversationID);

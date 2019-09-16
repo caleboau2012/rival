@@ -1,7 +1,6 @@
 var assert = require("assert");
 var logic = require("../logic");
 var requests = require("../requests");
-var converse = require("../conversation");
 
 describe("Application Logic", function() {
   describe("Faulty user Id", function() {

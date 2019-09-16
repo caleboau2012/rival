@@ -42,7 +42,7 @@ const startConversation = userId => {
     .startConversation(userId)
     .then(response => {
       console.log(response);
-      converse(response.conversation_id);
+      converse(response.conversation_id, prompt);
     })
     .catch(err => {
       console.log(
