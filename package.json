@@ -10,7 +10,7 @@
   "author": "Caleb Mbakwe",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "commander": "^3.0.1",
     "inquirer": "^7.0.0"
   },
